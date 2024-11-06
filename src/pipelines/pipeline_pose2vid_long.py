@@ -487,18 +487,6 @@ class Pose2VideoPipeline(DiffusionPipeline):
                 )
                 num_context_batches = math.ceil(len(context_queue) / context_batch_size)
 
-                context_queue = list(
-                    context_scheduler(
-                        0,
-                        num_inference_steps,
-                        latents.shape[2],
-                        context_frames,
-                        context_stride,
-                        context_overlap,
-                    )
-                )
-
-                num_context_batches = math.ceil(len(context_queue) / context_batch_size)
                 global_context = []
                 for i in range(num_context_batches):
                     global_context.append(
