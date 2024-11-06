@@ -482,9 +482,10 @@ class Pose2VideoPipeline(DiffusionPipeline):
                         latents.shape[2],
                         context_frames,
                         context_stride,
-                        0,
+                        context_overlap,
                     )
                 )
+
                 num_context_batches = math.ceil(len(context_queue) / context_batch_size)
 
                 global_context = []
